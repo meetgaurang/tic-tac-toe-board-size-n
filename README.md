@@ -1,2 +1,3 @@
-# tic-tac-toe-board-size-n
-Tic Tac Toe game with configurable board size. 
+# Tic Tac Toe Game with Board Size N
+
+Tic Tac Toe game with a configurable board size.
