@@ -7,22 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Tic Tac Toe Game with Configurable Board Size</title>
     <link rel="stylesheet" href="styles.css" />
-    <script src="./TicTacToe.js"></script>
-    <script>
-        const ticTacToe = new TicTacToe(3);
-
-        const onRestartGameClick = () => {
-            ticTacToe.restart();
-        };
-        const onBoardSizeChange = (event) => {
-            document.getElementById('boardSizeLabel').innerText = `Board size: ${event.target.value}`;
-            ticTacToe.onChangeBoardSize(event.target.value);
-        };
-
-        document.addEventListener('DOMContentLoaded', () => {
-            ticTacToe.init();
-        });
-    </script>
+    <script type="module" src="./index.js"></script>
 </head>
 
 <body>

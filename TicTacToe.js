@@ -1,4 +1,4 @@
-class TicTacToe {
+export class TicTacToe {
   constructor(boardSize) {
     this.boardSize = boardSize;
     this.isCrossTurnNow = true;

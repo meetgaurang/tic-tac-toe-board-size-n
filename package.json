@@ -1,0 +1,28 @@
+{
+  "name": "tic-tac-toe-board-size-n",
+  "version": "1.0.0",
+  "description": "Tic Tac Toe game with configurable board size.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.3.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meetgaurang/tic-tac-toe-board-size-n.git"
+  },
+  "keywords": [
+    "tictactoe",
+    "tic tac toe"
+  ],
+  "author": "Gaurang Patel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/meetgaurang/tic-tac-toe-board-size-n/issues"
+  },
+  "homepage": "https://github.com/meetgaurang/tic-tac-toe-board-size-n#readme"
+}
