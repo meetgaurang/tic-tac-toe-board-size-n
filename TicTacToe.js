@@ -12,7 +12,7 @@ class TicTacToe {
     this.#renderBoard();
   }
 
-  reset() {
+  restart() {
     for (let i = 0; i < this.boardSize; i++) {
       for (let j = 0; j < this.boardSize; j++) {
         if (this.boardInMemory[i][j]) {
@@ -25,7 +25,10 @@ class TicTacToe {
     document.getElementById("declaration").innerText = "";
   }
 
-  onChangeBoardSize() {}
+  onChangeBoardSize(newSize) {
+    this.boardSize = newSize;
+    this.init();
+  }
 
   #createBoardInMemory() {
     for (let i = 0; i < this.boardSize; i++) {
@@ -34,6 +37,7 @@ class TicTacToe {
   }
 
   #renderBoard() {
+    this.boardElement.innerHTML = "";
     // TODO: Set template column dynamically
     this.boardElement.setAttribute(
       "style",

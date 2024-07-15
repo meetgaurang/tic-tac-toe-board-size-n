@@ -5,14 +5,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>HTML + CSS</title>
+    <title>Tic Tac Toe Game with Configurable Board Size</title>
     <link rel="stylesheet" href="styles.css" />
     <script src="./TicTacToe.js"></script>
     <script>
         const ticTacToe = new TicTacToe(3);
 
         const onRestartGameClick = () => {
-            ticTacToe.reset();
+            ticTacToe.restart();
+        };
+        const onBoardSizeChange = (event) => {
+            document.getElementById('boardSizeLabel').innerText = `Board size: ${event.target.value}`;
+            ticTacToe.onChangeBoardSize(event.target.value);
         };
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -26,7 +30,13 @@
         <h1>Tic Tac Toe</h1>
         <div id="board">
         </div>
+
         <input type="button" onclick="onRestartGameClick()" value="Restart Game" />
+        <div>
+            <label id="boardSizeLabel" for="boardSize" style="display: block;">Board size: 3</label>
+            <input type="range" id="boardSize" name="board size" value="3" min="3" max="10"
+                onchange="onBoardSizeChange(event)" />
+        </div>
         <div id="declaration"></div>
     </div>
 </body>
