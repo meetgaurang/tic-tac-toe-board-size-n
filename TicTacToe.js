@@ -1,32 +1,28 @@
 export class TicTacToe {
   constructor(boardSize) {
     this.boardSize = boardSize;
-    this.isCrossTurnNow = true;
-    this.boardInMemory = [];
-    this.boardElement = null;
   }
 
+  /**
+   * Initilises the TicTacToe board in memory as well as renders in the DOM.
+   * This must be called after DOM content is ready, in other words, once 'DOMContentLoaded' event is fired.
+   */
   init() {
+    this.isCrossTurnNow = true;
+    this.boardInMemory = [];
     this.boardElement = document.getElementById("board");
     this.#createBoardInMemory();
     this.#renderBoard();
   }
 
   restart() {
-    for (let i = 0; i < this.boardSize; i++) {
-      for (let j = 0; j < this.boardSize; j++) {
-        if (this.boardInMemory[i][j]) {
-          document.getElementById(i + "" + j).innerText = "";
-          this.boardInMemory[i][j] = "";
-        }
-      }
-    }
-    this.isCrossTurnNow = true;
     document.getElementById("declaration").innerText = "";
+    this.init();
   }
 
   onChangeBoardSize(newSize) {
     this.boardSize = newSize;
+    document.getElementById("declaration").innerText = "";
     this.init();
   }
 
