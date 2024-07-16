@@ -31,6 +31,7 @@ export class TicTacToe {
   }
 
   #createBoardInMemory() {
+    this.boardInMemory = [];
     for (let i = 0; i < this.boardSize; i++) {
       this.boardInMemory.push(new Array(this.boardSize).fill(""));
     }
