@@ -38,7 +38,7 @@ export class TicTacToe {
     // TODO: Set template column dynamically
     this.boardElement.setAttribute(
       "style",
-      `grid-template-columns: repeat(${this.boardSize}, 1fr)`
+      `grid-template-columns: repeat(${this.boardSize}, 1fr)`,
     );
 
     // Start adding cells in the board
