@@ -67,7 +67,7 @@ export class TicTacToe {
       this.boardInMemory[index1][index2] = this.isCrossTurnNow ? "X" : "O";
       this.isCrossTurnNow = !this.isCrossTurnNow;
       const mark = this.#analyseBoardAndDecideWinner(this.boardInMemory);
-      if (!!mark) {
+      if (mark) {
         document.getElementById("declaration").innerText = mark + " won!";
       }
     }
