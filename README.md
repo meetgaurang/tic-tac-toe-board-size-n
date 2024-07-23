@@ -1,6 +1,8 @@
 # Tic Tac Toe Game with a Configurable Board Size
 
-Tic Tac Toe game with a configurable size of the board.
+Tic Tac Toe game with a configurable size of the board. The game can be accessed at [https://tic-tac-toe-board-size-n.vercel.app/](https://tic-tac-toe-board-size-n.vercel.app/).
+
+![Tic Tac Toe](/assets/game.png)
 
 ## How to use
 
@@ -24,7 +26,7 @@ npm run dev
 
 ## Tech Stack
 
-After doing lot of coding in React, had to refresh basic HTML, CSS, Javascript skills. So for this project, the tech stack is,
+After doing lot of coding in React and Typescript, started craving for vanilla HTML, CSS, Javascript. So for this project, the tech stack is,
 
 - Pure HTML, CSS and Javascript
 - Vite
