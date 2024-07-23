@@ -1,4 +1,4 @@
-import { TicTacToe } from "./TicTacToe";
+import { TicTacToe } from "./tictactoe";
 
 const ticTacToe = new TicTacToe(3);
 
