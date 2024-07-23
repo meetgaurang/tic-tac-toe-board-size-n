@@ -2,7 +2,7 @@
 
 Tic Tac Toe game with a configurable size of the board. The game can be accessed at [https://tic-tac-toe-board-size-n.vercel.app/](https://tic-tac-toe-board-size-n.vercel.app/).
 
-![Tic Tac Toe](/assets/game.png)
+![Tic Tac Toe](/docs/images/game.png)
 
 ## How to use
 
