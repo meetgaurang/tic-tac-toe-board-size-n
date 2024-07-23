@@ -5,10 +5,13 @@ const ticTacToe = new TicTacToe(3);
 export const onRestartGameClick = () => {
   ticTacToe.restart();
 };
+
 export const onBoardSizeChange = (event) => {
+  const newBoardSize = event.target.value;
+
   document.getElementById("boardSizeLabel").innerText =
-    `Board size: ${event.target.value}`;
-  ticTacToe.onChangeBoardSize(event.target.value);
+    `Board size: ${newBoardSize}`;
+  ticTacToe.onChangeBoardSize(newBoardSize);
 };
 
 document.addEventListener("DOMContentLoaded", () => {

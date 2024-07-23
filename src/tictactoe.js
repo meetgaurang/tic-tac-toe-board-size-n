@@ -1,6 +1,10 @@
 export class TicTacToe {
   constructor(boardSize) {
     this.boardSize = boardSize;
+    this.isCrossTurnNow = undefined;
+    this.boardInMemory = undefined;
+    this.winnderDeclarationElement = undefined;
+    this.winner = undefined;
   }
 
   /**
@@ -11,43 +15,48 @@ export class TicTacToe {
     this.isCrossTurnNow = true;
     this.boardInMemory = [];
     this.boardElement = document.getElementById("board");
+    this.winnderDeclarationElement = document.getElementById("declaration");
     this.#createBoardInMemory();
     this.#renderBoard();
   }
 
   restart() {
-    document.getElementById("declaration").innerText = "";
+    // Clear previously declared winner, if any
+    this.winner = undefined;
+    this.winnderDeclarationElement.innerText = "";
+    // Clear previously rendered board
+    this.boardElement.innerHTML = "";
+
+    // Initialise
     this.init();
   }
 
   onChangeBoardSize(newSize) {
     this.boardSize = newSize;
-    document.getElementById("declaration").innerText = "";
-    this.init();
+    this.restart();
   }
 
   #createBoardInMemory() {
-    this.boardInMemory = [];
     for (let i = 0; i < this.boardSize; i++) {
-      this.boardInMemory.push(new Array(this.boardSize).fill(""));
+      const emptyRow = new Array(this.boardSize).fill("");
+      this.boardInMemory.push(emptyRow);
     }
   }
 
   #renderBoard() {
-    this.boardElement.innerHTML = "";
-    // TODO: Set template column dynamically
+    // Set template column dynamically
     this.boardElement.setAttribute(
       "style",
       `grid-template-columns: repeat(${this.boardSize}, 1fr)`,
     );
 
     // Start adding cells in the board
-    for (let i = 0; i < this.boardSize; i++) {
-      for (let j = 0; j < this.boardSize; j++) {
+    for (let x = 0; x < this.boardSize; x++) {
+      for (let y = 0; y < this.boardSize; y++) {
         const divElement = document.createElement("div");
         divElement.className = "cell";
         // Each element will be identified by x and y cooardinates like '00', '01', '02'  etc.
-        divElement.id = i + "" + j;
+        divElement.id = x + "" + y;
         divElement.onclick = this.#onCellClick;
         this.boardElement.append(divElement);
       }
@@ -55,20 +64,27 @@ export class TicTacToe {
   }
 
   #onCellClick = (event) => {
-    let cellId = event.target.getAttribute("id");
-    const index1 = Number(cellId.charAt(0));
-    const index2 = Number(cellId.charAt(1));
-    let value = this.boardInMemory[index1][index2];
+    // Don't do anything if the game has finished
+    if (this.winner) {
+      return;
+    }
+
+    let cellCoordinates = event.target.getAttribute("id");
+    const xCoordinate = Number(cellCoordinates.charAt(0));
+    const yCoordinate = Number(cellCoordinates.charAt(1));
+    let value = this.boardInMemory[xCoordinate][yCoordinate];
 
     if (!value) {
-      document.getElementById(cellId).innerText = this.isCrossTurnNow
+      document.getElementById(cellCoordinates).innerText = this.isCrossTurnNow
         ? "X"
         : "O";
-      this.boardInMemory[index1][index2] = this.isCrossTurnNow ? "X" : "O";
+      this.boardInMemory[xCoordinate][yCoordinate] = this.isCrossTurnNow
+        ? "X"
+        : "O";
       this.isCrossTurnNow = !this.isCrossTurnNow;
-      const mark = this.#analyseBoardAndDecideWinner(this.boardInMemory);
-      if (mark) {
-        document.getElementById("declaration").innerText = mark + " won!";
+      this.winner = this.#analyseBoardAndDecideWinner(this.boardInMemory);
+      if (this.winner) {
+        this.winnderDeclarationElement.innerText = this.winner + " won!";
       }
     }
   };
